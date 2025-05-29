@@ -4,10 +4,11 @@ export default function ImageCard({
   image: {
     urls: { small: src },
     alt_description
-  }
+  },
+  onClick
 }) {
   return (
-    <div>
+    <div onClick={onClick}>
       <img src={src} alt={alt_description} />
     </div>
   );
