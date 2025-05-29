@@ -8,7 +8,7 @@ export default function ImageCard({
   onClick
 }) {
   return (
-    <div onClick={onClick}>
+    <div className={css.card} onClick={onClick}>
       <img src={src} alt={alt_description} />
     </div>
   );

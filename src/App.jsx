@@ -14,7 +14,7 @@ const App = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('cats');
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const search = (value) => {
@@ -47,7 +47,7 @@ const App = () => {
       <SearchBar onSubmit={search} />
       {error && <ErrorMessage error={error} />}
       {isLoading && <Loader />}
-      {images.length > 0 && (
+      {images.length ? (
         <ImageGallery
           images={images}
           onImageClick={(image) => {
@@ -55,6 +55,8 @@ const App = () => {
             setIsModalOpen(true);
           }}
         />
+      ) : (
+        <p>We have nothing here yet</p>
       )}
       {page < totalPages &&
         (isLoading ? <Loader size={100} /> : <LoadMoreBtn onClick={() => setPage(page + 1)} />)}
